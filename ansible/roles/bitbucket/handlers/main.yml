@@ -1,6 +1,6 @@
 - name: restart docker-compose
   shell: |
-    if docker ps --format '{{.Names}}' | grep -qE '^(postgresql|artifactory)$'; then
+    if docker ps --format '{{.Names}}' | grep -qE '^(postgresql|bitbucket)$'; then
       echo "Containers running. Restarting...";
       docker-compose down && docker-compose up -d
     else
