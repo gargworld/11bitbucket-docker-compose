@@ -42,13 +42,13 @@ services:
      - JDBC_URL=jdbc:postgresql://postgresql:5432/bitbucket
      - JDBC_USER={{ db_user }}
      - JDBC_PASSWORD={{ db_user }}
-     - JVM_MINIMUM_MEMORY=1024m
-     - JVM_MAXIMUM_MEMORY=4096m
+     - JVM_MINIMUM_MEMORY=512m
+     - JVM_MAXIMUM_MEMORY=1048m
     restart: always
     deploy:
       resources:
         limits:
-          memory: 4g
+          memory: 1g
     networks:
       - bitbucket-net
 
