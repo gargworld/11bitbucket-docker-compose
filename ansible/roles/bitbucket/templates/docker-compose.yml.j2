@@ -44,6 +44,8 @@ services:
      - JDBC_PASSWORD={{ db_user }}
      - JVM_MINIMUM_MEMORY=512m
      - JVM_MAXIMUM_MEMORY=1048m
+     - BITBUCKET_EMBEDDED_SEARCH=false
+     - PLUGIN_MESH_ENABLED=false
     restart: always
     deploy:
       resources:
