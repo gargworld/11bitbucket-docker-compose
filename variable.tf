@@ -25,7 +25,7 @@ variable "ami_value" {
 
 variable "instance_type" {
     description = "value for the instance type"
-    default = "t2.medium"
+    default = "t2.large"
 }
 
 variable "ec2_instance_count" {
