@@ -81,9 +81,6 @@
   file:
     path: "{{ postgresql_data_dir }}"
     state: directory
-    owner: 1030
-    group: 1030
-    mode: '0775'
 
 - name: Check if Bitbucket directory exists
   stat:
@@ -98,39 +95,11 @@
   file:
     path: "{{ bitbucket_data_dir }}"
     state: directory
-    owner: 1030
-    group: 1030
-    mode: '0775'
-
-#- name: Create master.key with random 32-byte hex string
-#  shell: "openssl rand -hex 32 | tr -d '\\n' > /data/bitbucket/master.key"
-#  args:
-#    creates: /data/bitbucket/master.key
-
-#- name: Set ownership of master.key to UID 1030 and GID 1030
-#  file:
-#    path: /data/bitbucket/master.key
-#    owner: "1030"
-#    group: "1030"
-
-#- name: Set permissions of master.key to 600
-#  file:
-#    path: /data/bitbucket/master.key
-#    mode: '0600'
 
 - name: Copy docker-compose.yml template
   template:
     src: docker-compose.yml.j2
     dest: "{{ docker_compose_path }}/docker-compose.yml"
-
-#- name: Copy .env file
-#  copy:
-#    src: .env
-#    dest: "{{ docker_compose_path }}/.env"
-#    owner: 1030
-#    group: 1030
-#    mode: '0644'
-#  notify: restart docker-compose
 
 - name: restart docker-compose
   shell: |
@@ -143,19 +112,3 @@
     fi
   args:
     chdir: "{{ docker_compose_path }}"
-
-#- name: Wait for /data/bitbucket/etc directory to exist (max 60 seconds)
-#  wait_for:
-#    path: /data/bitbucket/etc
-#    state: present
-#    timeout: 60
-#    delay: 30
-
-#- name: Recursively set permissions and ownership for etc directory
-#  file:
-#    path: /data/bitbucket/etc
-#    state: directory
-#    mode: '0775'
-#    owner: '1030'
-#    group: '1030'
-#    recurse: yes
