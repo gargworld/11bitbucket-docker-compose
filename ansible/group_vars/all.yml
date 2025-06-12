@@ -2,7 +2,7 @@ bitbucket_image: atlassian/bitbucket:8.19.2
 bitbucket_container_name: bitbucket
 bitbucket_port: 8081
 bitbucket_data_dir: /data/bitbucket
-postgresql_data_dir: /data/bitbucket/postgresql
+postgresql_data_dir: /data/postgresql
 
 #
 db_user: bitbucket
@@ -11,5 +11,4 @@ db_name: bitbucket
 db_host: postgresql
 db_port: 5432
 #
-#master_key_path: /data/bitbucket
 postgres_image: postgres:12
