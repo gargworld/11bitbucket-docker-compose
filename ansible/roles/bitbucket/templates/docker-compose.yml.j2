@@ -24,7 +24,8 @@ services:
     image: {{ bitbucket_image }}
     container_name: bitbucket
     ports:
-     - 8081:8081
+     - "7990:7990"    # Web UI
+     - "7999:7999"    # Git SSH access
     depends_on:
      - postgresql
     links:
